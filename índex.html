@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Perigo do Narguilé e Cigarro Eletrônico</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        #scene-container {
+            width: 80%;
+            height: 60vh;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scene {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .active {
+            display: flex;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .scene .text h1 {
+            margin-bottom: 10px;
+        }
+
+        .character {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 50%;
+            margin-top: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        #nextScene {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #nextScene:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .smoking { background-color: #FFA500; }
+        .mouth-damage { background-color: #FF0000; }
+        .e-cigarette { background-color: #00BFFF; }
+        .happy { background-color: #32CD32; }
+    </style>
+</head>
+<body>
+    <div id="scene-container">
+        <div id="scene1" class="scene active">
+            <div class="text">
+                <h1>O Perigo do Narguilé e Cigarro Eletrônico</h1>
+                <p>Você sabia que fumar narguilé por 1 hora é igual a fumar 100 cigarros?</p>
+            </div>
+            <div class="character smoking"></div>
+        </div>
+
+        <div id="scene2" class="scene">
+            <div class="text">
+                <h1>Câncer Bucal e Outros Riscos</h1>
+                <p>Fumar narguilé pode aumentar em 150 vezes o risco de câncer bucal!</p>
+            </div>
+            <div class="character mouth-damage"></div>
+        </div>
+
+        <div id="scene3" class="scene">
+            <div class="text">
+                <h1>Cigarro Eletrônico - Perigo Invisível</h1>
+                <p>Os vapores do cigarro eletrônico desativam as células protetoras do pulmão.</p>
+            </div>
+            <div class="character e-cigarette"></div>
+        </div>
+
+        <div id="scene4" class="scene">
+            <div class="text">
+                <h1>Conclusão: Faça escolhas inteligentes!</h1>
+                <p>Agora que você sabe os perigos, que tal cuidar da sua saúde?</p>
+            </div>
+            <div class="character happy"></div>
+        </div>
+    </div>
+
+    <button id="nextScene">Próxima Cena</button>
+
+    <script>
+        let currentScene = 0;
+        const scenes = document.querySelectorAll('.scene');
+        const nextButton = document.getElementById('nextScene');
+
+        // Mostrar a primeira cena
+        scenes[currentScene].classList.add('active');
+
+        nextButton.addEventListener('click', () => {
+            // Esconder cena atual
+            scenes[currentScene].classList.remove('active');
+
+            // Avançar para a próxima cena
+            currentScene = (currentScene + 1) % scenes.length;
+
+            // Mostrar a próxima cena
+            scenes[currentScene].classList.add('active');
+        });
+    </script>
+</body>
+</html>
