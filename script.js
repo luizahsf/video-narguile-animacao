@@ -1,3 +1,4 @@
+<script src="script.js"></script>
 let currentScene = 0;
 const scenes = document.querySelectorAll('.scene');
 const nextButton = document.getElementById('nextScene');
